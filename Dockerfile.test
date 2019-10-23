@@ -1,0 +1,10 @@
+FROM gradle:4.10.0-jdk8-alpine AS build
+ADD --chown=gradle:gradle https://github.com/ufoscout/docker-compose-wait/releases/download/2.6.0/wait /wait
+RUN chmod +x /wait
+COPY --chown=gradle:gradle . /home/gradle/src
+WORKDIR /home/gradle/src
+
+
+EXPOSE 8080
+
+CMD /wait && gradle clean test

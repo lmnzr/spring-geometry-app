@@ -1,0 +1,20 @@
+server:
+  port: 8080
+spring:
+  thymeleaf:
+    cache: false
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  profiles:
+#    active: ${SPRING_ENVIRONMENT}
+  datasource:
+    url: jdbc:${SPRING_DB_URL}/${SPRING_DB_SCHEMA}
+    username: ${SPRING_DB_USER}
+    password: ${SPRING_DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+flyway:
+  url: jdbc:${SPRING_DB_URL}/mysql
+  schemas: ${SPRING_DB_SCHEMA}
+  user: ${SPRING_DB_USER}
+  password: ${SPRING_DB_PASSWORD}

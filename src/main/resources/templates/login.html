@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Login</title>
+    <style>
+        body {font-family: Arial, Helvetica, sans-serif;}
+        form {border: 3px solid #f1f1f1;}
+
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+        }
+
+        img.avatar {
+            width: 20%;
+            border-radius: 20%;
+        }
+
+        .container {
+            padding: 16px;
+        }
+    </style>
+</head>
+<body>
+<h2>Login Form</h2>
+
+<form th:action="@{/login}" method="post">
+    <div class="imgcontainer">
+        <img th:src="@{img/login2.png}" alt="Avatar" class="avatar"/>
+    </div>
+
+    <div class="container">
+        <label><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="username" />
+
+        <label><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" />
+
+        <button type="submit">Login</button>
+    </div>
+</form>
+
+<div th:if="${param.error}">
+    <div style="padding: 16px; color: red">
+        Username atau password Salah
+    </div>
+</div>
+
+<div th:if="${param.success}">
+    <div style="padding: 16px; color: green">
+        Username atau password Benar
+    </div>
+</div>
+
+</body>
+</html>
